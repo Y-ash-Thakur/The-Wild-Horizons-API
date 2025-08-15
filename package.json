@@ -4,9 +4,12 @@
   "description": "a dataset of the planet's most interesting places",
   "main": "server.js",
   "type": "module",
-  "scripts": { 
-    "start": "node server.js"
+  "scripts": {
+    "start": "nodemon server.js"
   },
   "author": "Yash Thakur",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
