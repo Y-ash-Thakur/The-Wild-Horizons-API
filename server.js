@@ -1,6 +1,6 @@
 import http from 'node:http'
 import { getDataFromDB } from './database/db.js'
-import { sendJOSNResponse } from './utils/sendJSONResponse.js'
+import { sendJSONResponse } from './utils/sendJSONResponse.js'
 import { getDataByPathParams } from './utils/getDataByPathParams.js'
 
 const PORT = 8000
@@ -9,25 +9,25 @@ const server = http.createServer(async (req, res) => {
   const destinations = await getDataFromDB()
 
   if (req.url === '/api' && req.method === 'GET') {
-    sendJOSNResponse(res, 200, destinations)
+    sendJSONResponse(res, 200, destinations)
 
   } else if (req.url.startsWith('/api/continent') && req.method === 'GET') {
 
     const continent = req.url.split('/').pop()
     const filteredData = getDataByPathParams(destinations, 'continent', continent)
-    sendJOSNResponse(res, 200, filteredData)
+    sendJSONResponse(res, 200, filteredData)
 
   } else if (req.url.startsWith('/api/country') && req.method === 'GET') {
 
     const country = req.url.split('/').pop()
     const filteredData = getDataByPathParams(destinations, 'country', country)
-    sendJOSNResponse(res, 200, filteredData)
+    sendJSONResponse(res, 200, filteredData)
 
   }
   
   else {
 
-    sendJOSNResponse(res, 404, ({
+    sendJSONResponse(res, 404, ({
       error: 'Not Found',
       message: 'The requested route does not exist.'
     }))
