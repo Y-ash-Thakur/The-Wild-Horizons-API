@@ -8,7 +8,7 @@ const PORT = 8000
 const server = http.createServer(async (req, res) => {
   const destinations = await getDataFromDB()
 
-  const urlObj = new URL(req.url, `http://$(req.headers.host)`)
+  const urlObj = new URL(req.url, `http://${req.headers.host}`)
 
   const queryObj = Object.fromEntries(urlObj.searchParams)
 
