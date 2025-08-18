@@ -18,8 +18,6 @@ const server = http.createServer(async (req, res) => {
     let filteredData = getDataByQueryParams(destinations, queryObj)
     
     sendJSONResponse(res, 200, filteredData)
-    
-    console.log(queryObj)
 
   } else if (req.url.startsWith('/api/continent') && req.method === 'GET') {
 
